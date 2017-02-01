@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+sans|Raleway" rel="stylesheet">
+    <meta charset="utf-8">
+    <title>Monitor</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/css/foundation.min.css">
+    <!-- Compressed JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.0/js/foundation.min.js"></script>
+    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/foundation-datepicker.min.css">
+    <script src="/javascripts/foundation-datepicker.min.js"></script>
+    <!-- <script src="http://cdn.jsdelivr.net/walkway/0.0.7/walkway.min.js"></script> -->
+    <script src="/javascripts/walkway.min.js"></script>
+
+  <script>
+
+  $(function(){
+    var d = new Date();
+	$('#dp1').fdatepicker({
+		format: 'yyyy-mm-dd',
+		disableDblClickSelection: true,
+		leftArrow:'<',
+		rightArrow:'>',
+		closeIcon:'X',
+    startDate: d,
+		closeButton: false
+	});
+});
+  </script>
+  </head>
+    <body>
+      <ul class="menu align-right">
+        <a href="/"><h3 class="logoname">MONITOR ADVERTISING</h3></a>
+        <!-- <li><a href="/">Home</a></li> -->
+        <% if(!currentUser) { %>
+          <li><a href="/register">SIGN UP</a></li>
+        <% } %>
+        <% if(currentUser){ %>
+          <li><a href="/logout">LOG OUT</a></li>
+          <li><a href="/contact">CONTACT</a></li>
+          <li><a href="/monitors">BOOK</a></li>
+          <li><a href="/map">MAP</a></li>
+          <li><a href="/profile">MY PROFILE</a></li>
+        <% } else { %>
+          <li><a href="/login">LOG IN</a></li>
+        <% } %>
+
+        <!-- unique admin ID in db only in my computer, not optimal.. -->
+        <% if(currentUser === "587f6112cb5ad128c4d1f6f9"){ %>
+          <li><a href="/admin">OVERVIEW</a></li>
+        <% } %>
+      </ul>

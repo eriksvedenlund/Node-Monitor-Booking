@@ -1,0 +1,280 @@
+<% include partials/header %>
+
+<div class="containermap">
+  <h3 style="text-align:center;padding-top:15px;">Map</h3>
+  <div id="map"></div>
+</div>
+
+    <script>
+      var map;
+      function initMap() {
+        var brunnsparken = {lat: 57.706918, lng: 11.969612};
+        var centralen = {lat:	57.708569, lng: 11.973711};
+        var korsvagen = {lat: 57.696461, lng: 11.986599};
+        var svingeln = {lat: 57.712351, lng: 11.990491};
+        var ostrahamngatan = {lat: 57.705370, lng: 11.968690};
+        var gronsakstorget = {lat: 57.702710, lng: 11.964484};
+        var vasastan = {lat: 57.698583, lng: 11.969612};
+        var gotaplatsen = {lat: 57.698984, lng: 11.978474};
+        var kungsportsplatsen = {lat: 57.704144, lng: 11.969355};
+        var easterIsland = {lat: -27.113945, lng: -109.358564};
+          map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat:	57.704992, lng: 11.971758},
+          zoom: 14,
+          styles: [
+            {elementType: 'geometry', stylers: [{color: '#ecf0f1'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#1de'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#9d9e9d'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#fff'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#ecf0f1'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#ecf0f1'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#ecf0f1'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#d9d9d9'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#ecf0f1'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#ecf0f1'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#bdbaaa'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#ecf0f1'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#ecf0f1'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#ecf0f1'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#ecf0f1'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#7ec4df'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#515c6d'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#17263c'}]
+            }
+          ]
+        });
+        var brunnsparkenMarker = new google.maps.Marker({
+          position: brunnsparken,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: brunnsparkenInfo
+        });
+        var centralenMarker = new google.maps.Marker({
+          position: centralen,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: centralenInfo
+        });
+        var korsvagenMarker = new google.maps.Marker({
+          position: korsvagen,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: korsvagenInfo
+        });
+        var svingelnMarker = new google.maps.Marker({
+          position: svingeln,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: svingelnInfo
+        });
+        var ostrahamngatanMarker = new google.maps.Marker({
+          position: ostrahamngatan,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: ostrahamngatanInfo
+        });
+        var gronsakstorgetMarker = new google.maps.Marker({
+          position: gronsakstorget,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: gronsakstorgetInfo
+        });
+        var vasastanMarker = new google.maps.Marker({
+          position: vasastan,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: vasastanInfo
+        });
+        var gotaplatsenMarker = new google.maps.Marker({
+          position: gotaplatsen,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: gotaplatsenInfo
+        });
+        var kungsportsplatsenMarker = new google.maps.Marker({
+          position: kungsportsplatsen,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: kungsportsplatsenInfo
+        });
+        var easterIslandMarker = new google.maps.Marker({
+          position: easterIsland,
+          animation: google.maps.Animation.DROP,
+          map: map,
+          info: easterIslandInfo
+        });
+
+
+        var brunnsparkenInfo = '<h5>Brunnsparken</h5>' + '<h6>Price: 11000 kr</h6>' + '<img src="./images/brunnsparken.jpg" style="width:225px"/>' + '<br><a href="/monitors">Book</a>';
+        var centralenInfo = '<h5>Centralstationen</h5>' + '<h6>Price: 9000 kr</h6>' + '<img src="./images/centralstationen.jpg" style="width:225px"/>' + '<br><a href="/monitors">Book</a>';
+        var korsvagenInfo = '<h5>Korsvägen</h5>' + '<h6>Price: 7000 kr</h6>' + '<img src="./images/korsvagen.jpg" style="width:225px"/>' +'<br><a href="/monitors">Book</a>';
+        var svingelnInfo = '<h5>Svingeln</h5>' + '<h6>Price: 8000 kr</h6>' + '<img src="./images/svingeln.jpg" style="width:225px"/>' +'<br><a href="/monitors">Book</a>';
+        var ostrahamngatanInfo = '<h5>Östra hamngatan</h5>' + '<h6>Price: 10000 kr</h6>' + '<img src="./images/ostrahamngatan.jpg" style="width:225px"/>' +'<br><a href="/monitors">Book</a>';
+        var gronsakstorgetInfo = '<h5>Grönsakstorget</h5>' + '<h6>Price: 6000 kr</h6>' + '<img src="./images/gronsakstorget.jpg" style="width:225px"/>' +'<br><a href="/monitors">Book</a>';
+        var vasastanInfo = '<h5>Vasastan</h5>' + '<h6>Price: 6000 kr</h6>' + '<img src="./images/vasaplatsen.jpg" style="width:225px"/>' +'<br><a href="/monitors">Book</a>';
+        var gotaplatsenInfo = '<h5>Götaplatsen</h5>' + '<h6>Price: 9000 kr</h6>' + '<img src="./images/gotaplatsen.jpg" style="width:225px"/>' +'<br><a href="/monitors">Book</a>';
+        var kungsportsplatsenInfo = '<h5>Kungsportsplatsen</h5>' + '<h6>Price: 5000 kr</h6>' + '<img src="./images/kungsportsplatsen.jpg" style="width:225px"/>' + '<br><a href="/monitors">Book</a>';
+        var easterIslandInfo = '<h5>PÅSKÖN</h5>' + '<h6>Price: 1 000 000 000 kr</h6>' + '<img src="./images/ayylmao.jpg" style="width:225px"/>' + '<br><a href="http://knowyourmeme.com/memes/ayy-lmao" target="_blank">AYY LMAO</a>';
+
+
+
+        var brunnsparkenWindow = new google.maps.InfoWindow({
+          content: brunnsparkenInfo
+        });
+        var centralenWindow = new google.maps.InfoWindow({
+          content: centralenInfo
+        });
+        var korsvagenWindow = new google.maps.InfoWindow({
+          content: korsvagenInfo
+        });
+        var svingelnWindow = new google.maps.InfoWindow({
+          content: svingelnInfo
+        });
+        var ostrahamngatanWindow = new google.maps.InfoWindow({
+          content: ostrahamngatanInfo
+        });
+        var gronsakstorgetWindow = new google.maps.InfoWindow({
+          content: gronsakstorgetInfo
+        });
+        var vasastanWindow = new google.maps.InfoWindow({
+          content: vasastanInfo
+        });
+        var gotaplatsenWindow = new google.maps.InfoWindow({
+          content: gotaplatsenInfo
+        });
+        var kungsportsplatsenWindow = new google.maps.InfoWindow({
+          content: kungsportsplatsenInfo
+        });
+        var easterIslandWindow = new google.maps.InfoWindow({
+          content: easterIslandInfo
+        });
+
+        function closeAll(){
+          centralenWindow.close(map, this);
+          korsvagenWindow.close(map, this);
+          svingelnWindow.close(map, this);
+          ostrahamngatanWindow.close(map, this);
+          gronsakstorgetWindow.close(map, this);
+          vasastanWindow.close(map, this);
+          gotaplatsenWindow.close(map, this);
+          kungsportsplatsenWindow.close(map, this);
+          brunnsparkenWindow.close(map, this);
+        }
+
+
+
+        google.maps.event.addListener(brunnsparkenMarker, 'click', function() {
+          // Calling the open method of the infoWindow
+          closeAll();
+          brunnsparkenWindow.open(map, this);
+        });
+        google.maps.event.addListener(centralenMarker, 'click', function() {
+          // Calling the open method of the infoWindow
+          closeAll();
+          centralenWindow.open(map, this);
+        });
+        google.maps.event.addListener(korsvagenMarker, 'click', function() {
+          // Calling the open method of the infoWindow
+          closeAll();
+          korsvagenWindow.open(map, this);
+        });
+        google.maps.event.addListener(svingelnMarker, 'click', function() {
+          // Calling the open method of the infoWindow
+          closeAll();
+          svingelnWindow.open(map, this);
+        });
+        google.maps.event.addListener(ostrahamngatanMarker, 'click', function() {
+          // Calling the open method of the infoWindow
+          closeAll();
+          ostrahamngatanWindow.open(map, this);
+        });
+        google.maps.event.addListener(gronsakstorgetMarker, 'click', function() {
+          // Calling the open method of the infoWindow
+          closeAll();
+          gronsakstorgetWindow.open(map, this);
+        });
+        google.maps.event.addListener(vasastanMarker, 'click', function() {
+          // Calling the open method of the infoWindow
+          closeAll();
+          vasastanWindow.open(map, this);
+        });
+        google.maps.event.addListener(gotaplatsenMarker, 'click', function() {
+          // Calling the open method of the infoWindow
+          closeAll();
+          gotaplatsenWindow.open(map, this);
+        });
+        google.maps.event.addListener(kungsportsplatsenMarker, 'click', function() {
+          closeAll();
+          kungsportsplatsenWindow.open(map, this);
+        });
+        google.maps.event.addListener(easterIslandMarker, 'click', function() {
+          easterIslandWindow.open(map, this);
+        });
+
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAX9pHmUszuSL_BCbw6wkdTViBPuuxDQ9Y&callback=initMap"
+    async defer></script>
+
+
+
+<% include partials/footer %>

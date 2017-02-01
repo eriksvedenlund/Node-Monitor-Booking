@@ -1,0 +1,29 @@
+<% include partials/header %>
+
+<div class="monitorscontainer">
+	<div class="monitorstext">
+		<h3>Booking</h3>
+		<h6>Choose the monitor you want to book</h6>
+	</div>
+
+	<div class="monitorssection">
+		<% monitors.forEach((monitor) => { %>
+			<div class="listcontainer">
+				<h4><%= monitor.place %></h4>
+				<h6>Price: <%= monitor.price %> kr</h6>
+				<!-- <h2>Available: <%= monitor.available %></h2> -->
+				<button class="button small" onclick="window.location.href='/monitor/<%= monitor._id %>'">BOOK</button>
+				<!-- <button class="button tiny" onclick="window.location.href='/monitor/<%= monitor._id %>'">Boka <%= monitor.place %></button> -->
+
+			</div>
+		<% }) %>
+
+	</div>
+
+	    <% monitors.forEach((monitor) => { %>
+			<!-- <button onclick="window.location.href='/monitor/<%= monitor._id %>'">Boka <%= monitor.place %></button> -->
+		<% }) %>
+
+</div>
+
+<% include partials/footer %>

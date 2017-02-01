@@ -1,0 +1,15 @@
+<% include partials/header %>
+
+<div class="admincontainer">
+	<h3 style="text-align:center;padding-top:30px;">All bookings</h3>
+
+	<% reservations.forEach((reservation) => { %>
+	    <% if(reservation.monitor == null) return; %>
+			<h3>Bokad av: <%= reservation.bookedBy.name %></h3>
+			<h5>Monitor: <%= reservation.monitor.place %></h5>
+			<h5>Datum: <%= reservation.date.toLocaleDateString() %></h5>
+	<% }) %>
+</div>
+
+
+<% include partials/footer %>

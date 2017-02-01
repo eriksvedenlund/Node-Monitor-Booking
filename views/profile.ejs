@@ -1,0 +1,23 @@
+<% include partials/header %>
+<div class="profilecontainer">
+	<div class="profiletext">
+		<h3>Welcome <%= name %>!</h3>
+		<h5>Your bookings</h5>
+	</div>
+	<% reservations.forEach((reservation) => { %>
+	    <% if(reservation.monitor == null) return; %>
+	<ul class="inline-list">
+	<li>
+		<h5>Monitor: <%= reservation.monitor.place %></h6>
+		<h6>Date: <%= reservation.date.toLocaleDateString() %></h6>
+		<button class="button tiny alert" onclick="window.location.href='/reservation/<%= reservation._id %>/delete'">CANCEL</button>
+		<button class="button tiny" onclick="window.location.href='/reservation/<%= reservation._id %>'">UPDATE</button>
+	</li>
+</ul>
+	<% }) %>
+
+</div>
+
+
+
+<% include partials/footer %>
